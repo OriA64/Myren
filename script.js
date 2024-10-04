@@ -82,7 +82,6 @@ let npcs = [
         
 
 ];
-
 let moveInterval;
 let animationInterval;
 let frame = 1; // Track the current animation frame for the player
@@ -106,10 +105,15 @@ function initializeNPCs() {
     });
 }
 
-// Start NPC GIFs when the page loads
+// Start NPC GIFs and background music when the page loads
 window.onload = function () {
     initializeNPCs(); // Set GIFs for all NPCs
     initializePlayer(); // Initialize the player with the correct starting frame
+
+    // Start the background music
+    const backgroundMusic = document.getElementById('background-music');
+    backgroundMusic.volume = 0.5; // Adjust volume if needed
+    backgroundMusic.play(); // Play the music when the page loads
 };
 
 // Function to move the world (and everything within it, including NPCs)
