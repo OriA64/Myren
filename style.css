@@ -14,13 +14,13 @@ html, body {
     justify-content: center;
     align-items: center;
     background: #a4c364;
-    font-family: 'CuteFont', sans-serif; /* Apply the CuteFont across the entire webpage */
+    font-family: 'CuteFont', sans-serif;
 }
 
 #character {
     width: 140px;
     height: 140px;
-    background-image: url('Walking/down1.png'); /* Default starting image */
+    background-image: url('Walking/down1.png');
     background-size: cover;
     position: fixed;
     z-index: 100;
@@ -32,19 +32,16 @@ html, body {
     width: 100%;
     height: 100%;
     background-image: url('bg.png');
-    background-repeat: repeat; /* Ensure repeating background */
-    background-size: 672px 416px; /* Set appropriate background size */
-    transform: translate(0, 0);
+    background-repeat: repeat;
+    background-size: 672px 416px;
+    background-position: 0 0;
     transition: transform 0.2s ease-out;
     will-change: transform;
 }
 
-
 .npc {
-    width: 50px;
-    height: 50px;
     background-size: cover;
-    position: absolute; /* Positioned relative to the world */
+    position: absolute;
     color: white;
     font-size: 12px;
     text-align: center;
@@ -52,120 +49,49 @@ html, body {
     justify-content: center;
     align-items: center;
 }
+
 #npc-image {
     position: fixed;
-    bottom: 100px; /* Positioned above the dialogue box */
-    left: 50%; /* Center horizontally */
+    bottom: 100px;
+    left: 50%;
     transform: translateX(-50%);
-    width: 100px; /* Adjust as per your desired size */
-    height: 100px; /* Adjust as per your desired size */
+    width: 100px;
+    height: 100px;
     background-size: contain;
     background-repeat: no-repeat;
-    display: none; /* Hidden by default */
-    z-index: 1001; /* Above other elements */
+    display: none;
+    z-index: 1001;
 }
 
 #dialogue-box {
     position: fixed;
     bottom: 20px;
-    left: 50%; /* Center horizontally */
+    left: 50%;
     transform: translateX(-50%);
-    background-color: rgba(255, 255, 255, 0.2); /* White color with 80% opacity */
-    padding: 15px 25px; /* Add padding to the box */
-    border-radius: 10px; /* Rounded corners */
-
+    background-color: rgba(255, 255, 255, 0.2);
+    padding: 20px 40px; /* Increase padding to make the box larger */
+    border-radius: 10px;
     text-align: center;
     color: black;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); /* Optional: Adds shadow for depth */
-    z-index: 1000; /* Ensures it stays on top */
-    display: inline-block; /* Ensure the box size adapts to the text */
-    max-width: 90%; /* Set a max width to avoid the box getting too large */
-    white-space: nowrap; /* Prevent the text from wrapping, you can remove this if you want multiline text */
-    display: none; /* Hidden by default */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    display: inline-block;
+    max-width: 90%;
+    font-size: 74px; /* Increase font size for larger text */
+    white-space: nowrap; /* Prevent text from wrapping */
+    display: none;
 }
 
-/* Basic CSS setup for NPC prompt */
-.npc-prompt {
-    position: absolute;
-    top: -20px; /* Simple positioning above the NPC */
-    left: 0;
-    font-size: 14px;
-    color: black;
-    display: none; /* Hidden by default */
-    z-index: 99999999;
-}
 
-#npc1 {
-    left: 500px; 
-    top: 900px;
-}
-
-#npc2 {
-    top: 120px;
-    left: 400px;
-    width: 100px;
-    height: 100px;
-}
-
-#npc3 {
-    top: 50%;
-    left: 50%;
-    width: 100px;
-    height: 100px;
-}
-
-#npc4 {
-    top: 200px;
-    left: 1100px;
-    width: 80px;
-    height: 80px;
-}
-
-#npc5 {
-    top: 800px;
-    left: 1400px;
-    width: 60px;
-    height: 60px;
-}
-
-#npc6 {
-    top: 700px; /* Adjust the position */
-    left: 800px; /* Adjust the position */
-    width: 30px; /* Set the size */
-    height: 30px; /* Set the size */
-}
-
-#npc7 {
-    top: 2600px; /* 500px below the LavaAnt */
-    left: 900px;
-    width: 45px;
-    height: 45px;
-}
-
-#npc8 {
-    top: 2640px; /* 500px below the LavaAnt */
-    left: 800px;
-    width: 45px;
-    height: 45px;
-}
-
-#npc9 {
-    top: 2600px; /* 500px below the LavaAnt */
-    left: 1100px;
-    width: 45px;
-    height: 45px;
-}
-
-#npc10 {
-    top: 2800px; /* 500px below the LavaAnt */
-    left: 870px;
-    width: 45px;
-    height: 45px;
-}
-
-#npc11 {
-    top: 2800px; /* 500px below the LavaAnt */
-    left: 1000px;
-    width: 45px;
-    height: 45px;
-}
+/* Individual NPC Positions and Sizes */
+#npc1 { left: 500px; top: 900px; width: 50px; height: 50px; }
+#npc2 { left: 400px; top: 120px; width: 100px; height: 100px; }
+#npc3 { left: 700px; top: 500px; width: 100px; height: 100px; }
+#npc4 { left: 1100px; top: 200px; width: 80px; height: 80px; }
+#npc5 { left: 1400px; top: 800px; width: 60px; height: 60px; }
+#npc6 { left: 800px; top: 700px; width: 30px; height: 30px; }
+#npc7 { left: 900px; top: 2600px; width: 45px; height: 45px; }
+#npc8 { left: 800px; top: 2640px; width: 45px; height: 45px; }
+#npc9 { left: 1100px; top: 2600px; width: 45px; height: 45px; }
+#npc10 { left: 870px; top: 2800px; width: 45px; height: 45px; }
+#npc11 { left: 1000px; top: 2800px; width: 45px; height: 45px; }
