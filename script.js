@@ -83,8 +83,6 @@ let npcs = [
 
 ];
 
-
-
 let moveInterval;
 let animationInterval;
 let frame = 1; // Track the current animation frame for the player
@@ -92,6 +90,7 @@ const maxFrames = 8; // Total frames per direction for the player
 let activeDirection = null; // Track the current direction being held
 const interactionRange = 90; // Maximum distance to interact with NPCs
 let activeNPC = null; // Track which NPC the player is currently interacting with
+let isTextComplete = true; // Track if the current text is fully displayed (starts as true to allow initial interaction)
 
 // Ensure the player starts with the correct initial sprite
 function initializePlayer() {
@@ -201,8 +200,8 @@ function stopMoving() {
 
 // Function to handle interaction with NPCs and cycle through text
 function interactWithNPC() {
-    if (activeNPC) {
-        displayNPCText(); // Display the current line of dialogue if near an NPC
+    if (activeNPC && isTextComplete) { // Only allow interaction if the text is complete
+        advanceNPCText(); // Display the next line of dialogue if near an NPC
     }
 }
 
@@ -213,6 +212,7 @@ function displayNPCText() {
         const text = activeNPC.lines[activeNPC.currentLine];
         dialogueBox.textContent = ''; // Clear the dialogue box before displaying new text
         dialogueBox.style.display = 'block'; // Show the dialogue box
+        isTextComplete = false; // Reset the flag before starting to show the next line
 
         // Display each letter with a delay
         let currentIndex = 0;
@@ -221,7 +221,9 @@ function displayNPCText() {
                 // Append the next character (including spaces) to the dialogue box
                 dialogueBox.textContent += text[currentIndex];
                 currentIndex++;
-                setTimeout(showNextLetter, 20); // 0.2 seconds delay between each letter
+                setTimeout(showNextLetter, 20); // 0.02 seconds delay between each letter
+            } else {
+                isTextComplete = true; // Mark text as fully displayed
             }
         }
 
@@ -229,10 +231,9 @@ function displayNPCText() {
     }
 }
 
-
-// Function to advance to the next line of dialogue, looping at the end
+// Function to advance to the next line of dialogue, only if the previous one is fully displayed
 function advanceNPCText() {
-    if (activeNPC) {
+    if (activeNPC && isTextComplete) {
         // Move to the next line, loop back to the start if at the end
         activeNPC.currentLine = (activeNPC.currentLine + 1) % activeNPC.lines.length;
         displayNPCText(); // Update the dialogue box with the new line
@@ -291,7 +292,7 @@ document.addEventListener('keydown', function (event) {
     // Interact with NPC or advance dialogue when 'X' is pressed
     if (event.key === 'x' || event.key === 'X') {
         if (activeNPC) {
-            advanceNPCText(); // Go to the next line if already interacting with an NPC
+            advanceNPCText(); // Go to the next line if the previous one is done
         } else {
             interactWithNPC(); // Start interacting with an NPC if not already interacting
         }
