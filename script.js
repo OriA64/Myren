@@ -82,6 +82,7 @@ let npcs = [
         
 
 ];
+
 let moveInterval;
 let animationInterval;
 let frame = 1; // Track the current animation frame for the player
@@ -90,6 +91,15 @@ let activeDirection = null; // Track the current direction being held
 const interactionRange = 90; // Maximum distance to interact with NPCs
 let activeNPC = null; // Track which NPC the player is currently interacting with
 let isTextComplete = true; // Track if the current text is fully displayed (starts as true to allow initial interaction)
+let npcInteractions = 0;
+const totalNPCs = npcs.length;
+const npcInteractionCounter = document.getElementById('npc-interaction-counter');
+let interactedNPCs = new Set(); // To track unique NPCs interacted with
+
+function updateNPCInteractionCounter() {
+    const npcInteractionCounter = document.getElementById('npc-interaction-counter');
+    npcInteractionCounter.textContent = `NPCs interacted with: ${npcInteractions} / ${totalNPCs}`;
+}
 
 // Ensure the player starts with the correct initial sprite
 function initializePlayer() {
@@ -105,6 +115,27 @@ function initializeNPCs() {
     });
 }
 
+// Function to update the interaction counter text
+function updateNPCInteractionCounter() {
+    npcInteractionCounter.textContent = `NPCs interacted with: ${npcInteractions} / ${totalNPCs}`;
+}
+
+// Function to handle interaction with NPCs and cycle through text
+function interactWithNPC() {
+    if (activeNPC && isTextComplete) { // Only allow interaction if the text is complete
+        advanceNPCText(); // Display the next line of dialogue if near an NPC
+
+        // Check if it's the first time interacting with this NPC
+        if (!interactedNPCs.has(activeNPC.id)) {
+            interactedNPCs.add(activeNPC.id);
+            npcInteractions++; // Increment interaction count
+            updateNPCInteractionCounter(); // Update the on-screen counter
+        }
+    }
+}
+
+// Other functions like moveWorld, changeCharacterSprite, etc...
+
 // Start NPC GIFs and background music when the page loads
 window.onload = function () {
     initializeNPCs(); // Set GIFs for all NPCs
@@ -114,9 +145,9 @@ window.onload = function () {
     const backgroundMusic = document.getElementById('background-music');
     backgroundMusic.volume = 0.5; // Adjust volume if needed
     backgroundMusic.play(); // Play the music when the page loads
-};
+    updateNPCInteractionCounter(); // Initialize the counter when the page loads
 
-// Function to move the world (and everything within it, including NPCs)
+};
 function moveWorld(direction) {
     const world = document.getElementById('world');
     let x = parseInt(world.dataset.x || 0, 10);
@@ -125,27 +156,82 @@ function moveWorld(direction) {
     // Adjust the world position based on the direction
     switch (direction) {
         case 'left':
-            x += 15;
+            x += 10; // Moderate step size for smoother, faster movement
             break;
         case 'right':
-            x -= 15;
+            x -= 10;
             break;
         case 'up':
-            y += 15;
+            y += 10;
             break;
         case 'down':
-            y -= 15;
+            y -= 10;
             break;
     }
 
-    // Apply the translation to the world element
-    world.style.transform = `translate(${x}px, ${y}px)`;
+    // Move the world background position independently
+    let backgroundPositionX = parseInt(window.getComputedStyle(world).backgroundPositionX, 10);
+    let backgroundPositionY = parseInt(window.getComputedStyle(world).backgroundPositionY, 10);
+
+    switch (direction) {
+        case 'left':
+            backgroundPositionX += 10; // Move background with moderate speed
+            break;
+        case 'right':
+            backgroundPositionX -= 10;
+            break;
+        case 'up':
+            backgroundPositionY += 10;
+            break;
+        case 'down':
+            backgroundPositionY -= 10;
+            break;
+    }
+
+    // Apply the new background position to simulate movement
+    world.style.backgroundPosition = `${backgroundPositionX}px ${backgroundPositionY}px`;
+
+    // Move the NPCs in the same direction and speed as the world
+    const npcs = document.querySelectorAll('.npc');
+    npcs.forEach(npc => {
+        // Get current position from inline styles or dataset
+        let npcX = parseInt(npc.style.left || npc.dataset.x, 10);
+        let npcY = parseInt(npc.style.top || npc.dataset.y, 10);
+
+        // Adjust the NPCs' position based on the world movement
+        switch (direction) {
+            case 'left':
+                npcX += 10;
+                break;
+            case 'right':
+                npcX -= 10;
+                break;
+            case 'up':
+                npcY += 10;
+                break;
+            case 'down':
+                npcY -= 10;
+                break;
+        }
+
+        // Update the NPC's position with new values
+        npc.style.left = `${npcX}px`;
+        npc.style.top = `${npcY}px`;
+
+        // Update the data attributes to store the new position
+        npc.dataset.x = npcX;
+        npc.dataset.y = npcY;
+    });
+
+    // Store the world's new position
     world.dataset.x = x;
     world.dataset.y = y;
 
-    // Check for proximity to NPCs every time the world moves
+    // Check for proximity to NPCs after world movement
     checkProximityToNPCs();
 }
+
+
 
 // Function to change the character sprite based on the direction and frame number
 function changeCharacterSprite(direction) {
@@ -172,6 +258,7 @@ function changeCharacterSprite(direction) {
 }
 
 // Function to start moving the player and the world
+// Function to start moving the player and the world
 function startMoving(direction) {
     if (activeDirection !== direction) {
         stopMoving(); // Stop any previous movement if changing direction
@@ -185,12 +272,12 @@ function startMoving(direction) {
         moveInterval = setInterval(function () {
             moveWorld(direction);
             checkProximityToNPCs(); // Check proximity during movement
-        }, 50); // Adjust time for smoother movement
+        }, 40); // Faster but not too slow
 
         // Start updating the character's walking animation at a regular interval
         animationInterval = setInterval(function () {
             changeCharacterSprite(direction);
-        }, 140); // Adjust time for the frame switching
+        }, 120); // Faster animation for smoother walking
     }
 }
 
@@ -307,3 +394,4 @@ document.addEventListener('keydown', function (event) {
 document.addEventListener('keyup', function () {
     stopMoving();
 });
+
