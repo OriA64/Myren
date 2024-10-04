@@ -1,34 +1,36 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>I LOVE YOU MYREN</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css"> <!-- Link to external CSS -->
 </head>
 <body>
     <div id="world">
-        <div class="npc" id="npc1"><img src="chickengif.gif" alt="Chicken GIF"></div> <!-- NPC 1 -->
-        <div class="npc" id="npc2"><img src="comp1.gif" alt="Cow GIF"></div> <!-- NPC 2 -->
-        <div class="npc" id="npc3"><img src="cowgif.gif" alt="Pig GIF"></div> <!-- NPC 3 -->
-        <div class="npc" id="npc4"><img src="babycow.gif" alt="Sheep GIF"></div> <!-- NPC 4 -->
-        <div class="npc" id="npc5"><img src="duckgif.gif" alt="Duck GIF"></div> <!-- NPC 5 -->
-        <div class="npc" id="npc6"><img src="lavaant.gif" alt="LavaAnt GIF"></div> <!-- NPC 6 -->
-        <div class="npc" id="npc7"><img src="tunnelingmole.gif" alt="TunnelingMole GIF"></div> <!-- NPC 7 -->
-        <div class="npc" id="npc8"><img src="rhinobeetle.gif" alt="RhinoBeetle GIF"></div> <!-- NPC 8 -->
-        <div class="npc" id="npc9"><img src="infectedmouse.gif" alt="InfectedMouse GIF"></div> <!-- NPC 9 -->
-        <div class="npc" id="npc10"><img src="engorgedtick.gif" alt="EngorgedTick GIF"></div> <!-- NPC 10 -->
-        <div class="npc" id="npc11"><img src="dungbeetle.gif" alt="DungBeetle GIF"></div> <!-- NPC 11 -->
+        <div class="npc" id="npc1" data-x="500" data-y="900"><img src="chickengif.gif" alt="Chicken GIF"></div>
+        <div class="npc" id="npc2" data-x="400" data-y="120"><img src="comp1.gif" alt="Cow GIF"></div>
+        <div class="npc" id="npc3" data-x="700" data-y="500"><img src="cowgif.gif" alt="Pig GIF"></div>
+        <div class="npc" id="npc4" data-x="1100" data-y="200"><img src="babycow.gif" alt="Sheep GIF"></div>
+        <div class="npc" id="npc5" data-x="1400" data-y="800"><img src="duckgif.gif" alt="Duck GIF"></div>
+        <div class="npc" id="npc6" data-x="800" data-y="700"><img src="lavaant.gif" alt="LavaAnt GIF"></div>
+        <div class="npc" id="npc7" data-x="900" data-y="2600"><img src="tunnelingmole.gif" alt="TunnelingMole GIF"></div>
+        <div class="npc" id="npc8" data-x="800" data-y="2640"><img src="rhinobeetle.gif" alt="RhinoBeetle GIF"></div>
+        <div class="npc" id="npc9" data-x="1100" data-y="2600"><img src="infectedmouse.gif" alt="InfectedMouse GIF"></div>
+        <div class="npc" id="npc10" data-x="870" data-y="2800"><img src="engorgedtick.gif" alt="EngorgedTick GIF"></div>
+        <div class="npc" id="npc11" data-x="1000" data-y="2800"><img src="dungbeetle.gif" alt="DungBeetle GIF"></div>
     </div>
+
     <div id="character"></div> <!-- Fixed character in the center -->
 
-    <!-- Dialogue Box at the bottom of the screen -->
-     
     <div id="npc-image"></div> <!-- NPC Image above the dialogue box -->
-    <div id="dialogue-box" style="position: fixed; bottom: 20px; width: 100%; text-align: center; font-size: 74px;"></div>
+    <div id="dialogue-box"></div> <!-- Dialogue Box at the bottom of the screen -->
 
     <audio id="background-music" loop autoplay>
         <source src="background.mp3" type="audio/mpeg">
         Your browser does not support the audio element.
     </audio>
-    <script src="script.js"></script>
+
+    <script src="script.js"></script> <!-- Link to external JavaScript -->
 </body>
 </html>
