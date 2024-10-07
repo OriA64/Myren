@@ -20,7 +20,8 @@ html, body {
 #character {
     width: 140px;
     height: 140px;
-    background-image: url('Walking/down1.png');
+    background-color: #f5d142; /* Representative background color of down1.png */
+    background-image: url('Walking/down1.png'); /* Initial frame */
     background-size: cover;
     position: fixed;
     z-index: 100;
