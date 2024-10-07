@@ -135,9 +135,22 @@ function interactWithNPC() {
 }
 
 // Other functions like moveWorld, changeCharacterSprite, etc...
+function preloadImages() {
+    const images = [
+        'Walking/up1.png', 'Walking/up2.png', 'Walking/up3.png', // Add all up direction frames
+        'Walking/down1.png', 'Walking/down2.png', 'Walking/down3.png', // Add all down direction frames
+        'Walking/left1.png', 'Walking/left2.png', 'Walking/left3.png', // Add all left direction frames
+        'Walking/right1.png', 'Walking/right2.png', 'Walking/right3.png' // Add all right direction frames
+    ];
 
+    images.forEach(function(image) {
+        const img = new Image();
+        img.src = image;
+    });
+}
 // Start NPC GIFs and background music when the page loads
     window.onload = function () {
+        preloadImages();
         let loadingText = document.querySelector('#loading-screen h1');
         let loadingStates = ["Loading.", "Loading..", "Loading..."];
         let loadingIndex = 0;
