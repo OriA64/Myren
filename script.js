@@ -307,12 +307,12 @@ function startMoving(direction) {
         moveInterval = setInterval(function () {
             moveWorld(direction);
             checkProximityToNPCs(); // Check proximity during movement
-        }, 40); // Faster but not too slow
+        }, 50); // Adjust this value to a higher number if needed
 
         // Start updating the character's walking animation at a regular interval
         animationInterval = setInterval(function () {
             changeCharacterSprite(direction);
-        }, 120); // Faster animation for smoother walking
+        }, 250); // Increased delay to 250ms for smoother frame switching
     }
 }
 
