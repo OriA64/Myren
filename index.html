@@ -7,7 +7,14 @@
     <link rel="stylesheet" href="style.css"> <!-- Link to external CSS -->
 </head>
 <body>
-    <div id="world">
+
+    <!-- Loading Screen -->
+    <div id="loading-screen">
+        <h1>Loading<span id="loading-dots"></span></h1>
+    </div>
+
+    <!-- Game World (Initially Hidden) -->
+    <div id="world" style="display: none;">
         <div class="npc" id="npc1" data-x="500" data-y="900"><img src="chickengif.gif" alt="Chicken GIF"></div>
         <div class="npc" id="npc2" data-x="400" data-y="120"><img src="comp1.gif" alt="Cow GIF"></div>
         <div class="npc" id="npc3" data-x="700" data-y="500"><img src="cowgif.gif" alt="Pig GIF"></div>
