@@ -137,17 +137,39 @@ function interactWithNPC() {
 // Other functions like moveWorld, changeCharacterSprite, etc...
 
 // Start NPC GIFs and background music when the page loads
-window.onload = function () {
-    initializeNPCs(); // Set GIFs for all NPCs
-    initializePlayer(); // Initialize the player with the correct starting frame
+    window.onload = function () {
+        let loadingText = document.querySelector('#loading-screen h1');
+        let loadingStates = ["Loading.", "Loading..", "Loading..."];
+        let loadingIndex = 0;
 
-    // Start the background music
-    const backgroundMusic = document.getElementById('background-music');
-    backgroundMusic.volume = 0.5; // Adjust volume if needed
-    backgroundMusic.play(); // Play the music when the page loads
-    updateNPCInteractionCounter(); // Initialize the counter when the page loads
+        // Function to cycle through "Loading.", "Loading..", "Loading..."
+        function animateLoading() {
+            loadingText.textContent = loadingStates[loadingIndex]; // Update text
+            loadingIndex = (loadingIndex + 1) % loadingStates.length; // Loop through the states
+        }
 
-};
+        // Set interval to update the loading text every 500ms (0.5 seconds)
+        let loadingInterval = setInterval(animateLoading, 500);
+
+        // Display the loading screen for 5 seconds, then transition to the game
+        setTimeout(function() {
+            clearInterval(loadingInterval); // Stop the loading animation after 5 seconds
+            document.getElementById('loading-screen').style.display = 'none'; // Hide loading screen
+            document.getElementById('world').style.display = 'block'; // Show the game world
+        }, 5000); // 5000 ms = 5 seconds
+
+        // Initialize NPCs, player, and other game elements
+        initializeNPCs();
+        initializePlayer();
+        
+        // Start the background music
+        const backgroundMusic = document.getElementById('background-music');
+        backgroundMusic.volume = 0.5; // Adjust volume if needed
+        backgroundMusic.play(); // Play the music when the page loads
+        updateNPCInteractionCounter(); // Initialize the counter when the page loads
+    };
+
+
 function moveWorld(direction) {
     const world = document.getElementById('world');
     let x = parseInt(world.dataset.x || 0, 10);
