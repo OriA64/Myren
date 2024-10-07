@@ -156,7 +156,7 @@ function interactWithNPC() {
             clearInterval(loadingInterval); // Stop the loading animation after 5 seconds
             document.getElementById('loading-screen').style.display = 'none'; // Hide loading screen
             document.getElementById('world').style.display = 'block'; // Show the game world
-        }, 5000); // 5000 ms = 5 seconds
+        }, 10000); // 5000 ms = 5 seconds
 
         // Initialize NPCs, player, and other game elements
         initializeNPCs();
