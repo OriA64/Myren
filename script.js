@@ -312,7 +312,7 @@ function startMoving(direction) {
         // Start updating the character's walking animation at a regular interval
         animationInterval = setInterval(function () {
             changeCharacterSprite(direction);
-        }, 250); // Increased delay to 250ms for smoother frame switching
+        }, 120); // Increased delay to 250ms for smoother frame switching
     }
 }
 
