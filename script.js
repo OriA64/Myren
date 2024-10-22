@@ -292,7 +292,7 @@ function changeCharacterSprite(direction) {
     }
 }
 
-// Function to start moving the player and the world
+
 // Function to start moving the player and the world
 function startMoving(direction) {
     if (activeDirection !== direction) {
