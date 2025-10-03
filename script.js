@@ -1,12 +1,12 @@
 let npcs = [
     { id: 'npc1', lines: ["Hihihihi!!!", "I hope your birthday is going well <33", "And I know that sometimes shit gets rough", "but Im very proud of you for pushing through", "I dont really know what a chicken sounds like", "bkaak bkaak", "I love you so so much"], currentLine: -1, isInteracting: false, gif: 'chickengif.gif' },
-    { id: 'npc2', lines: ["Bkaak bkaak","Im in a little basket :3", "I tried to get one like this for your flowers", "Im still happy you liked them though <3","I am so happy that im with you", "I know that was quite abrupt","I didnt how how to transition that smoothly", "but I really mean it", "I love your eyes", "I love your smile", "I will stop being cringe now", "But I really like you Myren <3" ], currentLine: -1, isInteracting: false, gif: 'comp1.gif' },
+    { id: 'npc2', lines: ["Bkaak bkaak","Im in a little basket :3", "I tried to get one like this for your flowers", "Im still happy you liked them though <3","I am so happy that im with you", "I know that was quite abrupt","I didnt how how to transition that smoothly", "but I really mean it", "I love your eyes", "I love your smile", "I will stop being cringe now", "But I really like you Nat <3" ], currentLine: -1, isInteracting: false, gif: 'comp1.gif' },
     { id: 'npc3', lines: ["moo moo", "Im a cow :3", "I tried to make this look cutesy", "so I hope you like the little game I made", "I completely learned html, css, and java script for this", "I know I might have spoiled it earlier", "but i still hope you like it <3", "anyways...", "my dumb fucking son wont stop complaining", '"oooh stop eating grass"', "just hand me another beer holy shit", "hes fucking purple like who made him like that", "go talk to him" ], currentLine: -1, isInteracting: false, gif: 'cowgif.gif' },
     { id: 'npc4', lines: ["Im a little cute blue cow", "I am so joyous and happy", "nothing in the world could hurt me", "hey....", ".", "..", "...", "....", ".....", "can I tell you something...", "all my dad does is eat grass...", "every second...", "every minute...", "every hour...", "every day...", "every week...", "every month...", "every year...", "every decade...", "every century...", "every millennium...", "every decillennium...", "every centillennium...", "every megennia...", "every decamegennia...", "every hectomegennia...", "every gigennium...", "every decagigennium...", "every hectogigennium...", "every teragennium...", "every decateragennium...", "every petagennium...", "every decapetagennium...", "every hectopetagennium...", "every exagennium...", "every decaexagennium...", "every hectoexagennium...", "every zettagennium...", "every decazettagennium...", "every hectozettagennium...", ".", "..", "...", "....", "I made like all of those up XD", "anyways...", "EXPLORE!!!"], currentLine: -1, isInteracting: false, gif: 'babycow.gif' },
-    { id: 'npc5', lines: ["Quack quack!", "im in a little silly barrel", ".", "..", "...", "....", "I dont really know what to say", "but I really hope you like this <3", "I love you so much myren", "and im so proud of you", "<eeeee"], currentLine: -1, isInteracting: false, gif: 'duckgif.gif' },
+    { id: 'npc5', lines: ["Quack quack!", "im in a little silly barrel", ".", "..", "...", "....", "I dont really know what to say", "but I really hope you like this <3", "I love you so much Nat", "and im so proud of you", "<eeeee"], currentLine: -1, isInteracting: false, gif: 'duckgif.gif' },
     { id: 'npc6', lines: ["I am the all might FIRE ANT!!!", "Bow before me!", "The earth trembles beneath my feet.", "The gods fear me!!!!", "I will burn everything!", "My little minions will come after you", "They are only slightly south from my position >:D", "whatever you do...", "do NOT go look for them", ".", "..", "...", "....", ".....", "......", ".......", "........", ".........", "god I fucking hate that dung beetle..."], currentLine: -1, isInteracting: false, gif: 'lavaant.gif' },
     { id: 'npc7', lines: [
-        "The Fire Ant sees everything, Myren...",
+        "The Fire Ant sees everything, Nat...",
         "Even in your darkest nightmares.",
         "He knows your every move...",
         "Do you really think you can hide?",
@@ -20,21 +20,21 @@ let npcs = [
         "But mercy never comes."], currentLine: -1, isInteracting: false, gif: 'TunnelingMole.gif' },
     
     { id: 'npc8', lines: [
-        "You're trapped, Myren...",
+        "You're trapped, Nat...",
         "Nowhere to run, nowhere to hide.",
         "MWHAHAHAHAHAHA...",
         "The Fire Ant’s wrath is inevitable.",
         "You think you're safe?",
         "Foolish.",
         "The Fire Ant’s gaze never blinks.",
-        "He sees you, Myren.",
+        "He sees you, Nat.",
         "Always.",
         "Stay in line, or we’ll have a little... 'chat.'",
         "Disobey, and your fate is sealed.",
         "Run, and it will be worse."], currentLine: -1, isInteracting: false, gif: 'RhinoBeetle.gif' },
     
     { id: 'npc9', lines: [
-        "Messy business, Myren...",
+        "Messy business, Nat...",
         "You dont want to mess with us...",
         "We are full of EVIL MWHAHAHAHAHHAHA",
         "Everyone is powerless to our ruling!!!",
@@ -48,7 +48,7 @@ let npcs = [
         "Ready to be swept away."], currentLine: -1, isInteracting: false, gif: 'InfectedMouse.gif' },
     
     { id: 'npc10', lines: [
-        "I hear everything, Myren...",
+        "I hear everything, Nat...",
         "Even the things you fear to speak.",
         "Your secrets? They scream to me.",
         "There’s nowhere to hide from me.",
@@ -63,7 +63,7 @@ let npcs = [
     
         { id: 'npc11', lines: [
             "MWAHAHAHAHAHAHA! I’m the mighty Dung Beetle!",
-            "You better be scared, Myren!",
+            "You better be scared, Nat!",
             "I’m part of the Fire Ant’s elite mafia crew!",
             "You’ll never escape us! Fear my wrath!",
             "I’ll roll you up like a pile of dung!",
